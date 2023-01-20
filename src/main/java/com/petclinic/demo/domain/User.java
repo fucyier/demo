@@ -1,11 +1,14 @@
 package com.petclinic.demo.domain;
 
+import com.petclinic.demo.domain.enums.PetType;
+import com.petclinic.demo.domain.enums.RoleType;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(schema = "PetClinic",name = "User")
+@Table(schema = "petclinic",name = "User")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +20,9 @@ public class User implements Serializable {
     private String userName;
     @Column(name = "Password")
     private String password;
+    @Enumerated
+    @Column(name = "RoleType")
+    private RoleType roleType;
 
     public User() {
     }
@@ -52,6 +58,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public RoleType getRoleType() {
+        return roleType;
+    }
+
+    public void setRoleType(RoleType roleType) {
+        this.roleType = roleType;
     }
 
     @Override

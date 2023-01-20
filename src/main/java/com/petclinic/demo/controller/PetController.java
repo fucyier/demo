@@ -16,7 +16,7 @@ public class PetController {
         this.petService = petService;
     }
 
-    @GetMapping("/getList")
+    @GetMapping("/get-list")
     ResponseEntity<List<Pet>> petList() {
         List<Pet> petList = petService.getPetList();
         return ResponseEntity.ok(petList);

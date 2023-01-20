@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(schema = "PetClinic",name = "Pet")
+@Table(schema = "petclinic",name = "Pet")
 public class Pet implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
