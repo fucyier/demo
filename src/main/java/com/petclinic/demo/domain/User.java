@@ -1,14 +1,14 @@
 package com.petclinic.demo.domain;
 
-import com.petclinic.demo.domain.enums.PetType;
 import com.petclinic.demo.domain.enums.RoleType;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(schema = "petclinic",name = "User")
+@Table(schema = "petclinic", name = "User")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +20,11 @@ public class User implements Serializable {
     private String userName;
     @Column(name = "Password")
     private String password;
-    @Enumerated
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "RoleType")
     private RoleType roleType;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Pet> petList;
 
     public User() {
     }
@@ -66,6 +68,14 @@ public class User implements Serializable {
 
     public void setRoleType(RoleType roleType) {
         this.roleType = roleType;
+    }
+
+    public List<Pet> getPetList() {
+        return petList;
+    }
+
+    public void setPetList(List<Pet> petList) {
+        this.petList = petList;
     }
 
     @Override

@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(schema = "petclinic",name = "Pet")
+@Table(schema = "petclinic", name = "Pet")
 public class Pet implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +17,12 @@ public class Pet implements Serializable {
     private int id;
     @Column(name = "Name")
     private String name;
-    @Enumerated
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "Type")
     private PetType type;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     public Pet() {
     }
@@ -50,6 +52,14 @@ public class Pet implements Serializable {
         this.type = type;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,11 +75,7 @@ public class Pet implements Serializable {
 
     @Override
     public String toString() {
-        return "Pet{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type=" + type +
-                '}';
+        return "Pet{" + "id=" + id + ", name='" + name + '\'' + ", type=" + type + '}';
     }
 
 }
