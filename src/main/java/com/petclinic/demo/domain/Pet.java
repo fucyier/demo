@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @Table(schema = "petclinic", name = "Pet")
-public class Pet implements Serializable {
+public class Pet extends BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")

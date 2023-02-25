@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(schema = "petclinic", name = "User")
-public class User implements Serializable {
+public class User extends BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
