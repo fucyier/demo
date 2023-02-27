@@ -14,6 +14,6 @@ public class JpaInterceptorRegistration implements HibernatePropertiesCustomizer
 
     @Override
     public void customize(Map<String, Object> hibernateProperties) {
-        hibernateProperties.put("hibernate.session_factory.interceptor", myInterceptor);
+    //    hibernateProperties.put("hibernate.session_factory.interceptor", myInterceptor);
     }
 }

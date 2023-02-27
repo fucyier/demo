@@ -1,11 +1,13 @@
 package com.petclinic.demo.domain;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import com.petclinic.demo.listener.BaseEntityListener;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
+@EntityListeners(BaseEntityListener.class)
 public abstract class BaseEntity extends BaseId implements Serializable {
     @Column(name = "createdTime")
     private LocalDateTime createdTime;
