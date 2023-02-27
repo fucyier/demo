@@ -26,6 +26,7 @@ public class JpaInterceptor extends EmptyInterceptor {
             int ids = userService.getUser(1).getId();
             ((BaseEntity) entity).setCreated(ids);
             ((BaseEntity) entity).setCreatedTime(LocalDateTime.now());
+            ((BaseEntity) entity).setUpdatedTime(LocalDateTime.now());
             return super.onSave(entity, id, state, propertyNames, types);
         }
         return false;

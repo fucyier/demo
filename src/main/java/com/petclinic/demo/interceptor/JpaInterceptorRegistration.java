@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-public class MyInterceptorRegistration implements HibernatePropertiesCustomizer {
+public class JpaInterceptorRegistration implements HibernatePropertiesCustomizer {
 
     @Autowired
     private JpaInterceptor myInterceptor;

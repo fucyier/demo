@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
-public abstract class BaseEntity implements Serializable {
+public abstract class BaseEntity extends BaseId implements Serializable {
     @Column(name = "createdTime")
     private LocalDateTime createdTime;
     @Column(name = "created")

@@ -14,7 +14,7 @@ public class Pet extends BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
-    private int id;
+    private Integer id;
     @Column(name = "Name")
     private String name;
     @Enumerated(EnumType.ORDINAL)
@@ -28,11 +28,11 @@ public class Pet extends BaseEntity implements Serializable {
     }
 
     //getter and setter
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
