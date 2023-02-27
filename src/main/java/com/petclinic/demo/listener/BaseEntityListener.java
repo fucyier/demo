@@ -13,21 +13,11 @@ import java.time.LocalDateTime;
 @Component
 public class BaseEntityListener {
 
-
     private static UserService userService;
+
     @Autowired
-    public void init(UserService evenementPliRepository)
-    {
+    public void init(UserService evenementPliRepository) {
         BaseEntityListener.userService = evenementPliRepository;
-
-    }
-    @Autowired
-    public BaseEntityListener(UserService userService) {
-        this.userService = userService;
-    }
-
-    public BaseEntityListener() {
-
     }
 
     @PrePersist
