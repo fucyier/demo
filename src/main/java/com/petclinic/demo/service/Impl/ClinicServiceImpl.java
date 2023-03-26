@@ -1,5 +1,6 @@
 package com.petclinic.demo.service.Impl;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.petclinic.demo.domain.Clinic;
 import com.petclinic.demo.repository.ClinicRepository;
 import com.petclinic.demo.service.ClinicService;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,8 +47,15 @@ public class ClinicServiceImpl implements ClinicService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class}, isolation = Isolation.READ_COMMITTED, readOnly = true)
+    @HystrixCommand(fallbackMethod = "defaultGreeting")
     public List<Clinic> getClinicList() {
         logger.info("UserServiceImpl/getUserList");
+
         return clinicRepository.findAll();
+    }
+
+    private List<Clinic> defaultGreeting() {
+        List<Clinic> clinicList = new ArrayList<>();
+        return clinicList;
     }
 }

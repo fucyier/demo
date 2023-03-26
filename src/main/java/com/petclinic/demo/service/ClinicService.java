@@ -13,5 +13,5 @@ public interface ClinicService {
 
     Clinic getClinic(int id);
 
-    List<Clinic> getClinicList();
+    List<Clinic> getClinicList() ;
 }

@@ -2,6 +2,7 @@ package com.petclinic.demo.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+
 @Entity
 @Table(schema = "petclinic", name = "Clinic")
 public class Clinic extends BaseEntity implements Serializable {
